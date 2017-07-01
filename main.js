@@ -9,6 +9,10 @@
     return div.firstChild;
   }
   
+  function $class(parent, cls) {
+    return parent.getElementsByClassName(cls)[0];
+  }
+  
   var $addItem = $("editor__add-item");
   var $items = $("editor__items");
   var $save = $("editor__save");
@@ -17,7 +21,7 @@
   
   function generateItem() {
     var $e = $new(ITEM_HTML);
-    $e.getElementsByClassName("editor-item__remove")[0].addEventListener("click", removeItem.bind(this, $e));
+    $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
     return $e;
   }
   
@@ -35,6 +39,12 @@
   function save() {
     localStorage.clear();
     
+    var items = $items.childNodes;
+    
+    var ii = items.length;
+    for (var i = 0; i < ii; i++) {
+      localStorage.setItem($class(items[i], "editor-item__key"), $class(items[i], "editor-item__value"));
+    }
   }
   
   function load() {
@@ -42,8 +52,8 @@
     var ii = keys.length;
     for (var i = 0; i < ii; i++) {
       var $e = addItem();
-      $e.getElementsByClassName("editor-item__key")[0].value = keys[i];
-      $e.getElementsByClassName("editor-item__value")[0].value = localStorage.getItem(keys[i]);
+      $class($e, "editor-item__key").value = keys[i];
+      $class($e, "editor-item__value").value = localStorage.getItem(keys[i]);
     }
   }
   
