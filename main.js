@@ -13,11 +13,11 @@
   var $items = $("editor__items");
   var $save = $("editor__save");
   
-  var ITEM_HTML = '<div><input type="text" /><input type="text" /><button class="editor__remove-item">Remove</button></div>';
+  var ITEM_HTML = '<div><input class="editor-item__key" type="text" /><input class="editor-item__value" type="text" /><button class="editor-item__remove">Remove</button></div>';
   
   function generateItem() {
     var $e = $new(ITEM_HTML);
-    $e.getElementsByClassName("editor__remove-item")[0].addEventListener("click", removeItem.bind(this, $e));
+    $e.getElementsByClassName("editor-item__remove")[0].addEventListener("click", removeItem.bind(this, $e));
     return $e;
   }
   
@@ -26,8 +26,30 @@
   }
   
   function addItem() {
-    $items.appendChild(generateItem());
+    var $e = generateItem();
+    $items.appendChild($e);
+    
+    return $e;
   }
   
-  $addItem.addEventListener("click", addItem);
+  function save() {
+    localStorage.clear();
+    
+  }
+  
+  function load() {
+    var keys = Object.keys(localStorage);
+    var ii = keys.length;
+    for (var i = 0; i < ii; i++) {
+      var $e = addItem();
+      $e.getElementsByClassName("editor-item__key")[0].value = keys[i];
+      $e.getElementsByClassName("editor-item__value")[0].value = localStorage.getItem(keys[i]);
+    }
+  }
+  
+  function main() {
+    $addItem.addEventListener("click", addItem);
+    
+    load();
+  }
 }());
