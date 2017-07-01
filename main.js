@@ -43,7 +43,12 @@
     
     var ii = items.length;
     for (var i = 0; i < ii; i++) {
-      localStorage.setItem($class(items[i], "editor-item__key"), $class(items[i], "editor-item__value"));
+      var key = $class(items[i], "editor-item__key").value;
+      var value = $class(items[i], "editor-item__value").value;
+      
+      if (key !== "") {
+        localStorage.setItem($class(items[i], "editor-item__key").value, $class(items[i], "editor-item__value").value);
+      }
     }
   }
   
