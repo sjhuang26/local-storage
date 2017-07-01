@@ -11,13 +11,22 @@
   
   var $addItem = $("editor__add-item");
   var $items = $("editor__items");
-  var $removeItem = $("editor__remove-item");
   var $save = $("editor__save");
   
-  var ITEM_HTML = '<div><input type="text" /><input type="text" /></div>';
+  var ITEM_HTML = '<div><input type="text" /><input type="text" /><button class="editor__remove-item">Remove</button></div>';
+  
+  function generateItem() {
+    var $e = $new(ITEM_HTML);
+    $e.getElementsByClassName("editor__remove-item")[0].addEventListener("click", removeItem.bind(this, $e));
+    return $e;
+  }
+  
+  function removeItem($e) {
+    $e.parentNode.removeChild($e);
+  }
   
   function addItem() {
-    $save.appendChild($new(ITEM_HTML));
+    $items.appendChild(generateItem());
   }
   
   $addItem.addEventListener("click", addItem);
