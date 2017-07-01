@@ -15,10 +15,14 @@
     
     if (key === undefined) {
       output("\"key\" get parameter must be defined", true);
-    } else if (key === null) {
-      output("key not defined", true);
     } else {
-      output(localStorage.getItem(key), false);
+      var value = localStorage.getItem(key);
+      
+      if (value === null) {
+        output("key not defined", true);
+      } else {
+        output(value, false);
+      }
     }
   }
   
