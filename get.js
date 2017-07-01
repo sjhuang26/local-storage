@@ -5,17 +5,20 @@
         return decodeURIComponent(name[1]);
   }
   
-  function output(s) {
+  function output(s, isError) {
     document.getElementById("output").textContent = s;
+    document.getElementById("error").style.display = isError ? "block" : "none";
   }
   
   function main() {
     var key = get("key");
     
     if (key === undefined) {
-      output("\"key\" get parameter must be defined");
+      output("\"key\" get parameter must be defined", true);
+    } else if (key === null) {
+      output("key not defined", true);
     } else {
-      output(localStorage.getItem(key));
+      output(localStorage.getItem(key), false);
     }
   }
   
