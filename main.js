@@ -59,6 +59,7 @@
   
   function main() {
     $addItem.addEventListener("click", addItem);
+    $save.addEventListener("click", save);
     
     load();
   }
