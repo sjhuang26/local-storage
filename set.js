@@ -15,9 +15,9 @@
     var value = get("value");
     
     if (key === undefined) {
-      output("\"key\" get parameter must be defined", true);
+      output("GET parameter \"key\" is undefined", true);
     } else if (value === undefined) {
-      output("\"value\" get parameter must be defined", true);
+      output("GET parameter \"value\" is undefined", true);
     } else {
       localStorage.setItem(key, value);
       output("OPERATION SUCCESSFUL: key \"" + key + "\" set to \"" + value + "\".");
