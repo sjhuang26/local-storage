@@ -14,12 +14,12 @@
     var key = get("key");
     
     if (key === undefined) {
-      output("\"key\" get parameter must be defined", true);
+      output("GET parameter \"key\" is undefined", true);
     } else {
       var value = localStorage.getItem(key);
       
       if (value === null) {
-        output("key not defined", true);
+        output("Key does not exist in storage", true);
       } else {
         output(value, false);
       }
