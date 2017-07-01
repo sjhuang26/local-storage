@@ -20,7 +20,7 @@
       output("\"value\" get parameter must be defined", true);
     } else {
       localStorage.setItem(key, value);
-      output("key \"" + key + "\" set to \"" + value + "\".");
+      output("OPERATION SUCCESSFUL: key \"" + key + "\" set to \"" + value + "\".");
     }
   }
   
