@@ -33,7 +33,7 @@
   }
   
   function addItem() {
-    var $e = $table.insertRow();
+    var $e = $items.insertRow();
     var $cell1 = $e.insertCell();
     var $cell2 = $e.insertCell();
     var $cell3 = $e.insertCell();
