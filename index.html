@@ -24,7 +24,16 @@
       </header>
       <main class="mdl-layout__content">
         <div class="page-content">
-          <ul id="editor__items" class="mdl-list"></ul>
+          <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Key</th>
+                <th class="mdl-data-table__cell--non-numeric">Value</th>
+                <th class="mdl-data-table__cell--non-numeric">Remove</th>
+              </tr>
+            </thead>
+            <tbody class="editor__items"></tbody>
+          </table>
         </div>
       </main>
     </div>
