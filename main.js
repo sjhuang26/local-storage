@@ -49,7 +49,7 @@
            </button>
         </td>
       </tr>
-    /*
+    */
     
     var uniq1 = getUniqueNumber();
     var uniq2 = getUniqueNumber();
