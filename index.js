@@ -124,8 +124,8 @@
   }
   
   function load() {
-    while($editor.rows.length > 0) {
-      $editor.deleteRow(0);
+    while ($items.hasChildNodes()) {
+      $items.removeChild($items.lastChild);
     }
     
     var keys = Object.keys(localStorage);
