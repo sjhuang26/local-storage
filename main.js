@@ -6,7 +6,11 @@
   function $new(s) {
     var div = document.createElement('div');
     div.innerHTML = s;
-    return div.firstChild;
+    return div.children[0];
+  }
+  
+  function $u($e) {
+    componentHandler.upgradeElements($e);
   }
   
   function $class(parent, cls) {
@@ -16,13 +20,12 @@
   var $addItem = $("editor__add-item");
   var $items = $("editor__items");
   var $save = $("editor__save");
+  var $table = $("editor__table");
   
-  var ITEM_HTML = '<div><input class="editor-item__key" type="text" /><input class="editor-item__value" type="text" /><button class="editor-item__remove">Remove</button></div>';
-  
-  function generateItem() {
-    var $e = $new(ITEM_HTML);
-    $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
-    return $e;
+  var uniqueNumber = 0;
+  function getUniqueNumber() {
+    uniqueNumber++;
+    return uniqueNumber;
   }
   
   function removeItem($e) {
@@ -30,8 +33,68 @@
   }
   
   function addItem() {
-    var $e = generateItem();
-    $items.appendChild($e);
+    var $e = $items.insertRow();
+    var $cell1 = $e.insertCell();
+    var $cell2 = $e.insertCell();
+    var $cell3 = $e.insertCell();
+    
+    $e.className = "editor-item";
+    $cell1.className = "mdl-data-table__cell--non-numeric";
+    $cell2.className = "mdl-data-table__cell--non-numeric";
+    $cell3.className = "mdl-data-table__cell--non-numeric";
+    
+    $cell1.innerHTML = `
+      <div class="mdl-textfield mdl-js-textfield">
+         <input class="editor-item__key mdl-textfield__input" type="text">
+         <label class="editor-item__key-label mdl-textfield__label">Key</label>
+      </div>
+    `;
+    
+    $cell2.innerHTML = `
+      <div class="mdl-textfield mdl-js-textfield">
+        <input class="editor-item__value mdl-textfield__input" type="text">
+        <label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label>
+      </div>
+    `;
+    
+    $cell3.innerHTML = `
+      <button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">delete</i>
+      </button>
+    `;
+    //var $e = $new('<tr class="editor-item"><td class="mdl-data-table__cell--non-numeric"><div class="mdl-textfield mdl-js-textfield"><input class="editor-item__key mdl-textfield__input" type="text"><label class="editor-item__key-label mdl-textfield__label">Key</label></div></td><td><div class="mdl-textfield mdl-js-textfield"><input class="editor-item__value mdl-textfield__input" type="text"><label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label></div></td><td><button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">delete</i></button></td></tr>');
+    /*
+      <tr class="editor-item">
+        <td class="mdl-data-table__cell--non-numeric">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="editor-item__key mdl-textfield__input" type="text">
+            <label class="editor-item__key-label mdl-textfield__label">Key</label>
+          </div>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="editor-item__value mdl-textfield__input" type="text">
+            <label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label>
+          </div>
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+           <button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon">
+             <i class="material-icons">delete</i>
+           </button>
+        </td>
+      </tr>
+    */
+    
+    var uniq1 = getUniqueNumber();
+    var uniq2 = getUniqueNumber();
+    
+    $class($e, "editor-item__key").id = "editor-item__key-" + uniq1;
+    $class($e, "editor-item__key-label").setAttribute("for", "editor-item__key-" + uniq1);
+    $class($e, "editor-item__value").id = "editor-item__value-" + uniq2;
+    $class($e, "editor-item__value-label").setAttribute("for", "editor-item__value-" + uniq2)
+    
+    $u($e);
+    $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
     
     return $e;
   }
@@ -59,6 +122,9 @@
       var $e = addItem();
       $class($e, "editor-item__key").value = keys[i];
       $class($e, "editor-item__value").value = localStorage.getItem(keys[i]);
+      var $e2 = $e.getElementsByClassName("mdl-textfield");
+      $e2[0].MaterialTextfield.checkDirty();
+      $e2[1].MaterialTextfield.checkDirty();
     }
   }
   
