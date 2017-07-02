@@ -28,7 +28,8 @@
   }
   
   function generateItem() {
-    var $e = $new(`
+    var $e = $new('<tr class="editor-item"><td class="mdl-data-table__cell--non-numeric"><div class="mdl-textfield mdl-js-textfield"> <input class="editor-item__key mdl-textfield__input" type="text"> <label class="editor-item__key-label mdl-textfield__label">Key</label></div></td><td><div class="mdl-textfield mdl-js-textfield"> <input class="editor-item__value mdl-textfield__input" type="text"> <label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label></div></td><td> <button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">delete</i></button></td></tr>');
+    /*
       <tr class="editor-item">
         <td class="mdl-data-table__cell--non-numeric">
           <div class="mdl-textfield mdl-js-textfield">
@@ -48,7 +49,7 @@
            </button>
         </td>
       </tr>
-    `.replace(/\n/g,""));
+    /*
     
     var uniq1 = getUniqueNumber();
     var uniq2 = getUniqueNumber();
