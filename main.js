@@ -21,12 +21,38 @@
   var $items = $("editor__items");
   var $save = $("editor__save");
   
-  var ITEM_HTML = '<li class="editor-item mdl-list__item"><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__key"><label class=mdl-textfield__label for=sample1>Key</label></div><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__value"><label class=mdl-textfield__label for=sample1>Value</label></div><button class="editor-item__remove mdl-button mdl-button--icon mdl-js-button"><i class=material-icons>delete</i></button>';
+  var uniqueNumber = 0;
+  function getUniqueNumber() {
+    uniqueNumber++;
+    return uniqueNumber;
+  }
   
   function generateItem() {
-    var $e = $new(ITEM_HTML);
-    $u($e);
+    var $e = $new('<li class="editor-item mdl-list__item"><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__key"><label class="mdl-textfield__label editor-item__key-label">Key</label></div><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__value"><label class="mdl-textfield__label editor-item__value-label">Value</label></div><button class="editor-item__remove mdl-button mdl-button--icon mdl-js-button"><i class=material-icons>delete</i></button>');
+    /*
+    <li class="editor-item mdl-list__item">
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="editor-item__key mdl-textfield__input" type="text">
+    <label class="editor-item__key-label mdl-textfield__label">Key</label>
+  </div>
+<div class="mdl-textfield mdl-js-textfield">
+    <input class="editor-item__value mdl-textfield__input" type="text">
+    <label class="editor-item__value-label mdl-textfield__label">Value</label>
+  </div>
+<button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon">
+  <i class="material-icons">delete</i>
+</button>
+</li>
+    */
+    var uniq1 = getUniqueNumber();
+    var uniq2 = getUniqueNumber();
     
+    $class($e, "editor-item__key").id = "editor-item__key-" + uniq1;
+    $class($e, "editor-item__key-label").for = "editor-item__key-" + uniq1;
+    $class($e, "editor-item__value").id = "editor-item__value-" + uniq2;
+    $class($e, "editor-item__value-label").for = "editor-item__value-" + uniq2;
+    
+    $u($e);
     $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
     return $e;
   }
