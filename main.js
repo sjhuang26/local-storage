@@ -25,7 +25,7 @@
   
   function generateItem() {
     var $e = $new(ITEM_HTML);
-    $u($class($e, "editor-item"));
+    $u($e);
     $u($class($e, "editor-item__key"));
     $u($class($e, "editor-item__value"));
     $u($class($e, "editor-item__remove"));
