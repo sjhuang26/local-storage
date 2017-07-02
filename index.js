@@ -22,6 +22,7 @@
   var $save = $("editor__save");
   var $editor = $("editor");
   var $snackbar = $("snackbar");
+  var $refresh = $("editor__refresh");
   
   var uniqueNumber = 0;
   function getUniqueNumber() {
@@ -123,6 +124,10 @@
   }
   
   function load() {
+    while($editor.rows.length > 0) {
+      $editor.deleteRow(0);
+    }
+    
     var keys = Object.keys(localStorage);
     var ii = keys.length;
     for (var i = 0; i < ii; i++) {
@@ -138,6 +143,7 @@
   function main() {
     $addItem.addEventListener("click", addItem);
     $save.addEventListener("click", save);
+    $refresh.addEventListener("click", load);
     
     // https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload
     window.addEventListener("beforeunload", function (e) {
