@@ -132,7 +132,9 @@
     $addItem.addEventListener("click", addItem);
     $save.addEventListener("click", save);
     document.getElementsByTagName("body")[0].addEventListener("beforeunload", function() {
-      return "Do you want to leave this site? Changes you made may not be saved.";
+      return (function() {
+        return "Do you want to leave this site? Changes you made may not be saved.";
+      });
     });
     
     load();
