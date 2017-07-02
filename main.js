@@ -48,9 +48,9 @@
     var uniq2 = getUniqueNumber();
     
     $class($e, "editor-item__key").id = "editor-item__key-" + uniq1;
-    $class($e, "editor-item__key-label").for = "editor-item__key-" + uniq1;
+    $class($e, "editor-item__key-label").setAttribute("for", "editor-item__key-" + uniq1);
     $class($e, "editor-item__value").id = "editor-item__value-" + uniq2;
-    $class($e, "editor-item__value-label").for = "editor-item__value-" + uniq2;
+    $class($e, "editor-item__value-label").setAttribute("for", "editor-item__value-" + uniq2)
     
     $u($e);
     $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
