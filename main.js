@@ -91,7 +91,7 @@
       var $e = addItem();
       $class($e, "editor-item__key").value = keys[i];
       $class($e, "editor-item__value").value = localStorage.getItem(keys[i]);
-      var $e2 = $e.getElementsByClassName();
+      var $e2 = $e.getElementsByClassName("mdl-textfield");
       $e2[0].MaterialTextfield.checkDirty();
       $e2[1].MaterialTextfield.checkDirty();
     }
