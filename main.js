@@ -131,10 +131,13 @@
   function main() {
     $addItem.addEventListener("click", addItem);
     $save.addEventListener("click", save);
-    document.getElementsByTagName("body")[0].addEventListener("beforeunload", function() {
-      return (function() {
-        return "Do you want to leave this site? Changes you made may not be saved.";
-      });
+    
+    // https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload
+    window.addEventListener("beforeunload", function (e) {
+      var confirmationMessage = "Do you want to leave this site? Changes you made may not be saved.";
+      
+      e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+      return confirmationMessage;              // Gecko, WebKit, Chrome <34
     });
     
     load();
