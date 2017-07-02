@@ -6,7 +6,7 @@
   function $new(s) {
     var div = document.createElement('div');
     div.innerHTML = s;
-    return div.firstChild;
+    return div.children[0];
   }
   
   function $u($e) {
