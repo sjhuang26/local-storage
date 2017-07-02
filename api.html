@@ -4,9 +4,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="text.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-    <script defer src="index.js"></script>
   </head>
   <body>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -18,16 +17,6 @@
             <a class="mdl-navigation__link" href="whats-this.html">What's this?</a>
             <a class="mdl-navigation__link" href="api.html">API</a>
           </nav>
-          <div class="mdl-layout-spacer"></div>
-          <button id="editor__add-item" class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">add</i>
-          </button>
-          <button id="editor__save" class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">save</i>
-          </button>
-          <button id="editor__refresh" class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">refresh</i>
-          </button>
         </div>
       </header>
       <div class="mdl-layout__drawer">
@@ -40,22 +29,12 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content">
-          <table id="editor" class="editor mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-            <thead>
-              <tr>
-                <th class="mdl-data-table__cell--non-numeric">Key</th>
-                <th class="mdl-data-table__cell--non-numeric">Value</th>
-                <th class="mdl-data-table__cell--non-numeric"></th>
-              </tr>
-            </thead>
-            <tbody id="editor__items"></tbody>
-          </table>
+          <h1>API</h1>
+          <p>Use the following commands to interact with local storage:</p>
+          <p><strong>Get a value: </strong><code>sto.netlify.com/get?key=<i>{{key}}</i></code></p>
+          <p><strong>Set a value: </strong><code>sto.netlify.com/set?key=<i>{{key}}</i>&amp;value=<i>{{value}}</i></code></p>
         </div>
       </main>
-      <div id="snackbar" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-        <button class="mdl-snackbar__action" type="button"></button>
-      </div>
     </div>
   </body>
 </html>

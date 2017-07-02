@@ -20,12 +20,18 @@
   var $addItem = $("editor__add-item");
   var $items = $("editor__items");
   var $save = $("editor__save");
-  var $table = $("editor__table");
+  var $editor = $("editor");
+  var $snackbar = $("snackbar");
+  var $refresh = $("editor__refresh");
   
   var uniqueNumber = 0;
   function getUniqueNumber() {
     uniqueNumber++;
     return uniqueNumber;
+  }
+  
+  function snackbar(msg) {
+    $snackbar.MaterialSnackbar.showSnackbar({message: msg});
   }
   
   function removeItem($e) {
@@ -52,8 +58,8 @@
     
     $cell2.innerHTML = `
       <div class="mdl-textfield mdl-js-textfield">
-        <input class="editor-item__value mdl-textfield__input" type="text">
-        <label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label>
+        <textarea class="editor-item__value mdl-textfield__input" rows="1"></textarea>
+        <label class="editor-item__value-label mdl-textfield__label">Value</label>
       </div>
     `;
     
@@ -113,9 +119,15 @@
         localStorage.setItem($class(items[i], "editor-item__key").value, $class(items[i], "editor-item__value").value);
       }
     }
+    
+    snackbar("Local Storage saved.");
   }
   
   function load() {
+    while ($items.hasChildNodes()) {
+      $items.removeChild($items.lastChild);
+    }
+    
     var keys = Object.keys(localStorage);
     var ii = keys.length;
     for (var i = 0; i < ii; i++) {
@@ -131,6 +143,15 @@
   function main() {
     $addItem.addEventListener("click", addItem);
     $save.addEventListener("click", save);
+    $refresh.addEventListener("click", load);
+    
+    // https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload
+    window.addEventListener("beforeunload", function (e) {
+      var confirmationMessage = "Do you want to leave this site? Changes you made may not be saved.";
+      
+      e.returnValue = confirmationMessage;     // Gecko, Trident, Chrome 34+
+      return confirmationMessage;              // Gecko, WebKit, Chrome <34
+    });
     
     load();
   }
