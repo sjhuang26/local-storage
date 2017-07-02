@@ -28,6 +28,10 @@
     return uniqueNumber;
   }
   
+  function snackbar(msg) {
+    snackbarContainer.MaterialSnackbar.showSnackbar({message: msg});
+  }
+  
   function removeItem($e) {
     $e.parentNode.removeChild($e);
   }
@@ -113,6 +117,8 @@
         localStorage.setItem($class(items[i], "editor-item__key").value, $class(items[i], "editor-item__value").value);
       }
     }
+    
+    snackbar("Local Storage saved.");
   }
   
   function load() {
