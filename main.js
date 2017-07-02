@@ -48,7 +48,7 @@
            </button>
         </td>
       </tr>
-    `);
+    `.replace(/\n/g,""));
     
     var uniq1 = getUniqueNumber();
     var uniq2 = getUniqueNumber();
