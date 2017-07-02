@@ -18,6 +18,7 @@
   }
   
   var $addItem = $("editor__add-item");
+  var $items = $("editor__items");
   var $save = $("editor__save");
   var $table = $("editor__table");
   
