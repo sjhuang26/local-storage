@@ -91,6 +91,8 @@
       var $e = addItem();
       $class($e, "editor-item__key").value = keys[i];
       $class($e, "editor-item__value").value = localStorage.getItem(keys[i]);
+      $class($e, "editor-item__key").MaterialTextField.checkDirty();
+      $class($e, "editor-item__value").MaterialTextField.checkDirty();
     }
   }
   
