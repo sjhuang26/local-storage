@@ -1,3 +1,7 @@
 .editor-item .mdl-textfield {
   margin: -20px 0;
 }
+
+.editor {
+  width: 100%;
+}
