@@ -9,6 +9,10 @@
     return div.firstChild;
   }
   
+  function $u($e) {
+    componentHandler.upgradeElement($e);
+  }
+  
   function $class(parent, cls) {
     return parent.getElementsByClassName(cls)[0];
   }
@@ -17,10 +21,15 @@
   var $items = $("editor__items");
   var $save = $("editor__save");
   
-  var ITEM_HTML = '<div><input class="editor-item__key" type="text" /><input class="editor-item__value" type="text" /><button class="editor-item__remove">Remove</button></div>';
+  var ITEM_HTML = '<li class="editor-item mdl-list__item"><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__key"><label class=mdl-textfield__label for=sample1>Key</label></div><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__value"><label class=mdl-textfield__label for=sample1>Value</label></div><button class="editor-item__remove mdl-button mdl-button--icon mdl-js-button"><i class=material-icons>delete</i></button>';
   
   function generateItem() {
     var $e = $new(ITEM_HTML);
+    $u($class($e, "editor-item"));
+    $u($class($e, "editor-item__key"));
+    $u($class($e, "editor-item__value"));
+    $u($class($e, "editor-item__remove"));
+    
     $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
     return $e;
   }
