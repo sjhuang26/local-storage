@@ -33,9 +33,9 @@
   
   function addItem() {
     var $e = $table.insertRow();
-    var $cell1 = $e.insertCell();
-    var $cell2 = $e.insertCell();
-    var $cell3 = $e.insertCell();
+    var $cell1 = $e.insertCell(1);
+    var $cell2 = $e.insertCell(2);
+    var $cell3 = $e.insertCell(3);
     
     $e.className = "editor-item";
     $cell1.className = "mdl-data-table__cell--non-numeric";
