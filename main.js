@@ -10,7 +10,7 @@
   }
   
   function $u($e) {
-    componentHandler.upgradeElement($e);
+    componentHandler.upgradeElements($e);
   }
   
   function $class(parent, cls) {
@@ -26,9 +26,6 @@
   function generateItem() {
     var $e = $new(ITEM_HTML);
     $u($e);
-    $u($class($e, "editor-item__key"));
-    $u($class($e, "editor-item__value"));
-    $u($class($e, "editor-item__remove"));
     
     $class($e, "editor-item__remove").addEventListener("click", removeItem.bind(this, $e));
     return $e;
