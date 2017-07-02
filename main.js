@@ -21,6 +21,7 @@
   var $items = $("editor__items");
   var $save = $("editor__save");
   var $editor = $("editor");
+  var $snackbar = $("snackbar");
   
   var uniqueNumber = 0;
   function getUniqueNumber() {
@@ -29,7 +30,7 @@
   }
   
   function snackbar(msg) {
-    snackbarContainer.MaterialSnackbar.showSnackbar({message: msg});
+    $snackbar.MaterialSnackbar.showSnackbar({message: msg});
   }
   
   function removeItem($e) {
