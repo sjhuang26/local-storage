@@ -28,21 +28,27 @@
   }
   
   function generateItem() {
-    var $e = $new('<li class="editor-item mdl-list__item"><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__key"><label class="mdl-textfield__label editor-item__key-label">Key</label></div><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__value"><label class="mdl-textfield__label editor-item__value-label">Value</label></div><button class="editor-item__remove mdl-button mdl-button--icon mdl-js-button"><i class=material-icons>delete</i></button>');
+    var $e = $new('<tr class=editor-item><td class=mdl-data-table__cell--non-numeric><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__key"><label class="mdl-textfield__label editor-item__key-label">Key</label></div><td><div class="mdl-js-textfield mdl-textfield"><input class="mdl-textfield__input editor-item__value"><label class="mdl-textfield__label editor-item__value-label"rows=1>Value</label></div><td><button class="editor-item__remove mdl-button mdl-button--icon mdl-js-button"><i class=material-icons>delete</i></button>');
     /*
-    <li class="editor-item mdl-list__item">
-  <div class="mdl-textfield mdl-js-textfield">
-    <input class="editor-item__key mdl-textfield__input" type="text">
-    <label class="editor-item__key-label mdl-textfield__label">Key</label>
-  </div>
-<div class="mdl-textfield mdl-js-textfield">
-    <input class="editor-item__value mdl-textfield__input" type="text">
-    <label class="editor-item__value-label mdl-textfield__label">Value</label>
-  </div>
-<button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon">
-  <i class="material-icons">delete</i>
-</button>
-</li>
+    <tr class="editor-item">
+      <td class="mdl-data-table__cell--non-numeric">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="editor-item__key mdl-textfield__input" type="text">
+          <label class="editor-item__key-label mdl-textfield__label">Key</label>
+        </div>
+      </td>
+      <td>
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="editor-item__value mdl-textfield__input" type="text">
+          <label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label>
+        </div>
+      </td>
+      <td>
+         <button class="editor-item__remove mdl-button mdl-js-button mdl-button--icon">
+           <i class="material-icons">delete</i>
+         </button>
+      </td>
+    </tr>
     */
     var uniq1 = getUniqueNumber();
     var uniq2 = getUniqueNumber();
