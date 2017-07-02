@@ -52,8 +52,8 @@
     
     $cell2.innerHTML = `
       <div class="mdl-textfield mdl-js-textfield">
-        <input class="editor-item__value mdl-textfield__input" type="text">
-        <label class="editor-item__value-label mdl-textfield__label" rows="1">Value</label>
+        <textarea class="editor-item__value mdl-textfield__input" rows="1"></textarea>
+        <label class="editor-item__value-label mdl-textfield__label">Value</label>
       </div>
     `;
     
