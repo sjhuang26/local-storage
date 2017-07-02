@@ -91,9 +91,9 @@
       var $e = addItem();
       $class($e, "editor-item__key").value = keys[i];
       $class($e, "editor-item__value").value = localStorage.getItem(keys[i]);
-      Array.prototype.forEach.call($e.getElementsByClassName(), function (elem) {
-        elem.MaterialTextfield.checkDirty();
-      });
+      var $e2 = $e.getElementsByClassName();
+      $e2[0].MaterialTextfield.checkDirty();
+      $e2[1].MaterialTextfield.checkDirty();
     }
   }
   
